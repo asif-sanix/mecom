@@ -8,8 +8,9 @@
 .env.backup
 .env.production
 .phpunit.result.cache
+ignore .DS_Store file.
+git rm --cached .DS_Store
 *.DS_Store
-.DS_Store
 Homestead.json
 Homestead.yaml
 auth.json
