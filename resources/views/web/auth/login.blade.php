@@ -15,34 +15,25 @@
 							<div class="padding_eight_all bg-white">
 								<div class="heading_s1">
 									<h1 class="mb-5">Login</h1>
-									<p class="mb-30">Don't have an account? <a href="page-register.html">Create here</a></p>
+									<p class="mb-30">Don't have an account? <a href="{{route('register')}}">Create here</a></p>
 								</div>
-								<form method="post">
+								<form method="POST" action="{{ route('login') }}">
+									@csrf
 									<div class="form-group">
 										<input type="text" required="" name="email" placeholder="Username or Email *" />
 									</div>
 									<div class="form-group">
 										<input required="" type="password" name="password" placeholder="Your password *" />
 									</div>
-									<div class="login_footer form-group">
-										<div class="chek-form">
-											<input type="text" required="" name="email" placeholder="Security code *" />
-										</div>
-										<span class="security-code">
-											<b class="text-new">8</b>
-											<b class="text-hot">6</b>
-											<b class="text-sale">7</b>
-											<b class="text-best">5</b>
-										</span>
-									</div>
+									
 									<div class="login_footer form-group mb-50">
 										<div class="chek-form">
 											<div class="custome-checkbox">
-												<input class="form-check-input" type="checkbox" name="checkbox" id="exampleCheckbox1" value="" />
-												<label class="form-check-label" for="exampleCheckbox1"><span>Remember me</span></label>
+												<input class="form-check-input" type="checkbox" name="remember" id="remember_me" value="" />
+												<label class="form-check-label" for="remember_me"><span>Remember me</span></label>
 											</div>
 										</div>
-										<a class="text-muted" href="#">Forgot password?</a>
+										<a class="text-muted" href="{{ route('password.request') }}">Forgot password?</a>
 									</div>
 									<div class="form-group">
 										<button type="submit" class="btn btn-heading btn-block hover-up" name="login">Log in</button>
