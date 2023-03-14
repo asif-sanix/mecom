@@ -26,7 +26,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="d-flex flex-column align-items-center text-center">
-                            <img src="{{!empty($user->avatar) ? asset($user->avatar) : asset('storage/admin/profile/default.png')}}" alt="Admin" class="avatar rounded-circle p-1 bg-primary" width="110">
+                            <img src="{{!empty($user->avatar) ? asset($user->avatar) : asset('storage/admin/profile/default.png')}}" alt="Admin" class="avatar rounded-circle p-1" width="110">
                             <div class="mt-3">
                                 <h4>{{$user->name}}</h4>
                                 <p class="text-muted font-size-sm">{{$user->email}}</p>
@@ -144,7 +144,7 @@
                             <div class="col-sm-9 text-secondary">
                                 <input id="avatar" type="file" name="avatar" class="form-control" />
                                 <br>
-                                <img id="show_avatar" src="{{!empty($user->avatar) ? asset($user->avatar) : asset('storage/admin/profile/default.png')}}" alt="Admin" class="avatar rounded-circle p-1 bg-primary" width="110">
+                                <img id="show_avatar" src="{{!empty($user->avatar) ? asset($user->avatar) : asset('storage/admin/profile/default.png')}}" alt="Admin" class="avatar rounded-circle p-1" width="110">
                             </div>
                         </div>
 
