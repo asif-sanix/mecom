@@ -13,11 +13,25 @@
 			<!--navigation-->
 			<ul class="metismenu" id="menu">
 				<li>
-					<a href="{{route('admin.dashobard')}}">
+					<a href="{{route('admin.dashboard')}}">
 						<div class="parent-icon"><i class='bx bx-home-circle'></i>
 						</div>
 						<div class="menu-title">Dashboard</div>
 					</a>
+				</li>
+
+				<li>
+					<a href="javascript:;" class="has-arrow">
+						<div class="parent-icon"><i class="bx bx-category"></i>
+						</div>
+						<div class="menu-title">Brands</div>
+					</a>
+					<ul>
+						<li> <a href="{{route('admin.brand.index')}}"><i class="bx bx-right-arrow-alt"></i>All Brands</a>
+						</li>
+						<li> <a href="{{route('admin.brand.create')}}"><i class="bx bx-right-arrow-alt"></i>Add Brands</a>
+						</li>
+					</ul>
 				</li>
 				
 			</ul>

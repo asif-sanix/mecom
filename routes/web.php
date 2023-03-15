@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\VendorController;
 use App\Http\Controllers\Usercontroller;
+use App\Http\Controllers\Admin\BrandController;
 
 /*
 |--------------------------------------------------------------------------
@@ -93,3 +94,21 @@ Route::middleware(['auth','role:vendor'])->name('vendor.')->group(function() {
     
 });
 
+
+
+Route::middleware(['auth','role:admin'])->prefix('admin')->group(function() {
+
+
+    // Brand All Route 
+    Route::controller(BrandController::class)->name('admin.brand.')->group(function(){
+        Route::get('/brand' , 'index')->name('index');
+        Route::get('/brand/create' , 'create')->name('create');
+        Route::post('/brand/store' , 'store')->name('store');
+        Route::get('/brand/edit/{id}' , 'edit')->name('edit');
+        Route::post('/brand/update' , 'update')->name('update');
+        Route::get('/brand/delete/{id}' , 'delete')->name('delete');
+
+    });
+
+
+});
