@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\VendorController;
+use App\Http\Controllers\Usercontroller;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,15 +21,34 @@ Route::get('/', function () {
     return view('web.home');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+//Route::get('login', [Usercontroller::class, 'login'])->name('user.login');
+Route::middleware(['auth'])->name('user.')->group(function() {
+    Route::get('logout', [Usercontroller::class, 'logout'])->name('logout');
+    Route::get('dashboard', [Usercontroller::class, 'dashboard'])->name('dashboard');
 
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('profile', [Usercontroller::class, 'profile'])->name('profile');
+    Route::post('profile', [Usercontroller::class, 'profileUpdate'])->name('profile.update');
+
+    Route::get('password/change', [Usercontroller::class, 'passwordChange'])->name('password.change');
+    Route::post('password/update', [Usercontroller::class, 'passwordUpdate'])->name('password.update');
+
+
 });
+
+
+
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
+
+
+
+
+// Route::middleware('auth')->group(function () {
+//     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+//     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+//     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+// });
 
 require __DIR__.'/auth.php';
 
@@ -40,7 +60,7 @@ Route::middleware(['auth','role:admin'])->group(function() {
  
     Route::get('admin/logout', [AdminController::class, 'logout'])->name('admin.logout');
 
-    Route::get('admin/dashboard', [AdminController::class, 'AdminDashboard'])->name('admin.dashobard');
+    Route::get('admin/dashboard', [AdminController::class, 'AdminDashboard'])->name('admin.dashboard');
 
     Route::get('admin/profile', [AdminController::class, 'profile'])->name('admin.profile');
     Route::post('admin/profile', [AdminController::class, 'profileUpdate'])->name('admin.profile.update');
@@ -64,7 +84,7 @@ Route::get('vendor/login', [VendorController::class, 'login'])->name('vendor.log
 Route::middleware(['auth','role:vendor'])->name('vendor.')->group(function() {
     Route::get('vendor/logout', [VendorController::class, 'logout'])->name('logout');
 
-    Route::get('vendor/dashboard', [VendorController::class, 'VendorDashboard'])->name('dashobard');
+    Route::get('vendor/dashboard', [VendorController::class, 'VendorDashboard'])->name('dashboard');
 
     Route::get('vendor/profile', [VendorController::class, 'profile'])->name('profile');
     Route::post('vendor/profile', [VendorController::class, 'profileUpdate'])->name('profile.update');

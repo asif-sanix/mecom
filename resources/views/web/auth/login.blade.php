@@ -21,9 +21,11 @@
 									@csrf
 									<div class="form-group">
 										<input type="text" required="" name="email" placeholder="Username or Email *" />
+										<small class="text-danger">{{ $errors->first('email') }}</small>
 									</div>
 									<div class="form-group">
 										<input required="" type="password" name="password" placeholder="Your password *" />
+										<small class="text-danger">{{ $errors->first('password') }}</small>
 									</div>
 									
 									<div class="login_footer form-group mb-50">

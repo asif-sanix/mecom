@@ -16,6 +16,7 @@
     <!-- Template CSS -->
     <link rel="stylesheet" href="{{asset('assets/css/plugins/animate.min.css')}}" />
     <link rel="stylesheet" href="{{asset('assets/css/main.css?v=5.3')}}" />
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" >
 </head>
 
 <body>
@@ -64,6 +65,16 @@
     <!-- Template  JS -->
     <script src="{{asset('assets/js/main.js?v=5.3')}}"></script>
     <script src="{{asset('assets/js/shop.js?v=5.3')}}"></script>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+
+	@if (Session::has('message'))
+    <script type="text/javascript">
+        Command: toastr["{{Session::get('class')}}"](" {{Session::get('message')}}")
+    </script>
+  	@endif
+    @stack('scripts')
 </body>
 
 </html>

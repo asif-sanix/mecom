@@ -61,7 +61,7 @@
                         </div>
 
 
-                        <form method="post" action="{{route('admin.password.update')}}" enctype="multipart/form-data">
+                        <form method="post" action="{{route('vendor.password.update')}}" enctype="multipart/form-data">
                             @csrf
                         
                             <div class="col-md-12 mb-3">
@@ -91,7 +91,7 @@
                 </div>
             </div>
             <div class="col-lg-8">
-                <form method="post" action="{{route('admin.profile.update')}}" enctype="multipart/form-data">
+                <form method="post" action="{{route('vendor.profile.update')}}" enctype="multipart/form-data">
                     @csrf
                 <div class="card">
                     <div class="card-body">
